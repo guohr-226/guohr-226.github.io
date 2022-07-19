@@ -1,0 +1,228 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>MIT The Missing Semester of Your CS Education Lecture 2 - Shell tool and scripting | ghr226のblog</title>
+<meta name="description" content="音无结弦之时，天使跃动之心。立于浮华之世，奏响天籁之音。">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://guohr-226.github.io//favicon.ico?v=1658226554357">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://guohr-226.github.io//styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://guohr-226.github.io/">
+        <img class="avatar" src="https://guohr-226.github.io//images/avatar.png?v=1658226554357" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://guohr-226.github.io/">
+        <h1 class="site-title">ghr226のblog</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="https://guohr-226.github.io/" class="menu purple-link">
+            主页
+          </a>
+        
+      
+        
+          <a href="https://guohr-226.github.io/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="https://guohr-226.github.io/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+            <div class="feature-container" style="background-image: url('https://guohr-226.github.io//post-images/mit-the-missing-semester-of-your-cs-education-lecture-2-shell-tool-and-scripting.jpg')">
+            </div>
+          
+          <h2 class="post-title">MIT The Missing Semester of Your CS Education Lecture 2 - Shell tool and scripting</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2022-07-16</span>
+            
+              <span>
+                <i class="icon-pricetags-outline"></i>
+                
+                  <a href="https://guohr-226.github.io/tag/YaxSMFG8N/">
+                    CS
+                    
+                  </a>
+                
+              </span>
+            
+          </div>
+          <div class="post-content">
+            <p>@ [toc]</p>
+<h1 id="mit-the-missing-semester-of-your-cs-education-lecture-2-shell-tool-and-scripting">MIT The Missing Semester of Your CS Education Lecture 2 - Shell tool and scripting</h1>
+<h2 id="赋值">赋值</h2>
+<pre><code>$ foo=hello
+$ echo $foo
+hello
+</code></pre>
+<ul>
+<li>单引号与双引号<br>
+双引号中的变量会被展开</li>
+</ul>
+<pre><code>$ foo=hello
+$ echo &quot;$foo world&quot;
+hello world
+$ echo '$foo world'
+$foo world
+</code></pre>
+<ul>
+<li>定义函数</li>
+</ul>
+<pre><code>$ source a.sh
+</code></pre>
+<ul>
+<li>
+<p>mkdir -p ( create a directory under the current directory)</p>
+</li>
+<li>
+<p>保留变量<br>
+$0: the name of the script<br>
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mo>−</mo><mn>9</mn><mo>:</mo><mi>t</mi><mi>h</mi><mi>e</mi><mi>s</mi><mi>e</mi><mi>c</mi><mi>o</mi><mi>n</mi><mi>d</mi><mi>t</mi><mi>h</mi><mi>r</mi><mi>o</mi><mi>u</mi><mi>g</mi><mi>h</mi><mi>t</mi><mi>t</mi><mi>h</mi><mi>e</mi><mi>n</mi><mi>i</mi><mi>n</mi><mi>t</mi><mi>h</mi><mi>a</mi><mi>r</mi><mi>g</mi><mi>u</mi><mi>m</mi><mi>e</mi><mi>n</mi><mi>t</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">1-9: the second throught the ninth arguments
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">9</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">t</span><span class="mord mathdefault">h</span><span class="mord mathdefault">e</span><span class="mord mathdefault">s</span><span class="mord mathdefault">e</span><span class="mord mathdefault">c</span><span class="mord mathdefault">o</span><span class="mord mathdefault">n</span><span class="mord mathdefault">d</span><span class="mord mathdefault">t</span><span class="mord mathdefault">h</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">o</span><span class="mord mathdefault">u</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">h</span><span class="mord mathdefault">t</span><span class="mord mathdefault">t</span><span class="mord mathdefault">h</span><span class="mord mathdefault">e</span><span class="mord mathdefault">n</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mord mathdefault">t</span><span class="mord mathdefault">h</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">u</span><span class="mord mathdefault">m</span><span class="mord mathdefault">e</span><span class="mord mathdefault">n</span><span class="mord mathdefault">t</span><span class="mord mathdefault">s</span></span></span></span>?: get the value from the previous command<br>
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mrow></mrow><mo>:</mo></msub><mi>t</mi><mi>h</mi><mi>e</mi><mi>l</mi><mi>a</mi><mi>s</mi><mi>t</mi><mi>a</mi><mi>r</mi><mi>g</mi><mi>u</mi><mi>m</mi><mi>e</mi><mi>n</mi><mi>t</mi><mi>o</mi><mi>f</mi><mi>t</mi><mi>h</mi><mi>e</mi><mi>p</mi><mi>r</mi><mi>e</mi><mi>v</mi><mi>i</mi><mi>o</mi><mi>u</mi><mi>s</mi><mi>c</mi><mi>o</mi><mi>m</mi><mi>m</mi><mi>a</mi><mi>n</mi><mi>d</mi></mrow><annotation encoding="application/x-tex">_: the last argument of the previous command
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mrel mtight">:</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault">t</span><span class="mord mathdefault">h</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">a</span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">u</span><span class="mord mathdefault">m</span><span class="mord mathdefault">e</span><span class="mord mathdefault">n</span><span class="mord mathdefault">t</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord mathdefault">t</span><span class="mord mathdefault">h</span><span class="mord mathdefault">e</span><span class="mord mathdefault">p</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mord mathdefault">i</span><span class="mord mathdefault">o</span><span class="mord mathdefault">u</span><span class="mord mathdefault">s</span><span class="mord mathdefault">c</span><span class="mord mathdefault">o</span><span class="mord mathdefault">m</span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord mathdefault">d</span></span></span></span>#:<br>
+!!: the previous command</p>
+</li>
+</ul>
+<pre><code>$ mkdir test
+$ cd $_
+</code></pre>
+<ul>
+<li>grep ( search)</li>
+</ul>
+<pre><code>$ grep 1 a.cpp ( search a in the a.cpp)
+</code></pre>
+<ul>
+<li>
+<p>返回值<br>
+0 : true<br>
+1 : false</p>
+</li>
+<li>
+<p>运算符<br>
+&amp;&amp;, ||, ;</p>
+</li>
+</ul>
+<pre><code>$ false || echo &quot;oops fail&quot;
+oops fail
+$ true || echo &quot;will not be printed&quot;
+$ true &amp;&amp; echo &quot;it goes well&quot;
+it goes well
+$ false &amp;&amp; echo &quot;will not be printed&quot;
+$ false ; echo &quot;things always be printed&quot;
+things always be printed
+</code></pre>
+<ul>
+<li>命令替换: $( )</li>
+</ul>
+<pre><code>$ foo=$(pwd)
+$ echo &quot;We are in the $(pwd)&quot;
+</code></pre>
+<ul>
+<li>过程替换: &lt;() 将()内容输入文件</li>
+</ul>
+<pre><code>$ echo &lt;(ls) &lt;(ls ..)
+</code></pre>
+<ul>
+<li></li>
+</ul>
+
+          </div>
+        </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="https://guohr-226.github.io/post/mit-the-missing-semester-of-your-cs-education-lecture-1-shell/">
+              <h3 class="post-title">
+                下一篇：MIT The Missing Semester of Your CS Education Lecture 1 - Shell
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">音无结弦之时，天使跃动之心。立于浮华之世，奏响天籁之音。</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://guohr-226.github.io//atom.xml" target="_blank">RSS</a>
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>

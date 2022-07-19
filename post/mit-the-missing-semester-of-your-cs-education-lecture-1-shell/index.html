@@ -1,0 +1,355 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>MIT The Missing Semester of Your CS Education Lecture 1 - Shell | ghr226のblog</title>
+<meta name="description" content="音无结弦之时，天使跃动之心。立于浮华之世，奏响天籁之音。">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://guohr-226.github.io//favicon.ico?v=1658226554357">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://guohr-226.github.io//styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://guohr-226.github.io/">
+        <img class="avatar" src="https://guohr-226.github.io//images/avatar.png?v=1658226554357" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://guohr-226.github.io/">
+        <h1 class="site-title">ghr226のblog</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="https://guohr-226.github.io/" class="menu purple-link">
+            主页
+          </a>
+        
+      
+        
+          <a href="https://guohr-226.github.io/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="https://guohr-226.github.io/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+            <div class="feature-container" style="background-image: url('https://guohr-226.github.io//post-images/mit-the-missing-semester-of-your-cs-education-lecture-1-shell.jpg')">
+            </div>
+          
+          <h2 class="post-title">MIT The Missing Semester of Your CS Education Lecture 1 - Shell</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2022-07-15</span>
+            
+              <span>
+                <i class="icon-pricetags-outline"></i>
+                
+                  <a href="https://guohr-226.github.io/tag/YaxSMFG8N/">
+                    CS
+                    
+                  </a>
+                
+              </span>
+            
+          </div>
+          <div class="post-content">
+            <p><ul class="markdownIt-TOC">
+<li><a href="#mit-the-missing-semester-of-your-cs-education-lecture-1">MIT The Missing Semester of Your CS Education Lecture 1</a>
+<ul>
+<li><a href="#what-is-shell">what is shell</a></li>
+<li><a href="#bash">bash</a></li>
+</ul>
+</li>
+</ul>
+</p>
+<h1 id="mit-the-missing-semester-of-your-cs-education-lecture-1">MIT The Missing Semester of Your CS Education Lecture 1</h1>
+<blockquote>
+<p>shell</p>
+</blockquote>
+<h2 id="what-is-shell">what is shell</h2>
+<p>命令行工具，基于文本工具<br>
+windows: powershell<br>
+linux: bash ( bourne again shell）</p>
+<h2 id="bash">bash</h2>
+<p>命令行提示符  ( shell prompt)</p>
+<ul>
+<li>date ( date and time)</li>
+</ul>
+<p>带参数 ( arguments) 执行程序</p>
+<ul>
+<li>echo ( print the arguments you give it)</li>
+</ul>
+<pre><code>$ echo hello
+hello
+</code></pre>
+<p>参数需要空格 ( white space)分开<br>
+字符串用<code>&quot;&quot; or ''</code><br>
+单转义用<code>\</code></p>
+<pre><code>$ echo &quot;hello world&quot;
+hello world
+$ echo hello\ world
+hello world
+</code></pre>
+<ul>
+<li>mkdir ( make directory)</li>
+</ul>
+<p>内嵌程序位于系统文件 ( system file)<br>
+搜索借助环境变量 ( environment variable)中 PATH变量 ( PATH variable)</p>
+<pre><code>$ echo $PATH
+</code></pre>
+<ul>
+<li>which ( to find which it actully runs)</li>
+</ul>
+<pre><code>$ which echo
+</code></pre>
+<blockquote>
+<p>PATH:<br>
+linux/macos: /<br>
+under root/<br>
+windows: <br>
+one root for every partition<br>
+absolute path/ relative path</p>
+</blockquote>
+<ul>
+<li>pwd ( print working directory)</li>
+</ul>
+<pre><code>$ pwd
+</code></pre>
+<ul>
+<li>cd ( change directory)</li>
+</ul>
+<pre><code>$ cd /home
+</code></pre>
+<ul>
+<li>. ( the current directory)</li>
+<li>.. ( the parent directory)</li>
+</ul>
+<p>write a program please give a absolute path😀</p>
+<p>运行程序默认当前目录</p>
+<ul>
+<li>ls ( list the files in the current directory)</li>
+</ul>
+<pre><code>$ ls
+</code></pre>
+<ul>
+<li>~ ( direct to the home directory)</li>
+<li>cd - ( cd the dirctory you were previously in)</li>
+</ul>
+<p>程序有标志 ( flag)和选项 ( option)作为参数，以<code>-</code>开头</p>
+<ul>
+<li>--help</li>
+</ul>
+<pre><code>$ ls --help
+</code></pre>
+<ul>
+<li>-l ( give you more information)</li>
+</ul>
+<pre><code>$ ls -l
+</code></pre>
+<blockquote>
+<p>ls -l的列表：<br>
+3个字母一组<br>
+当前用户权限 | 当前用户组权限 | 其他人权限<br>
+read | write | execute<br>
+for flie: read ( read it), write ( save, add more, replace), execute ( run it)<br>
+for directory: read( list for the directory), write ( rename, create, remove file), execute( enter the dierctory)<br>
+(detele flie need the write for the directory)</p>
+</blockquote>
+<ul>
+<li>mv ( rename file) ( change or move)</li>
+</ul>
+<pre><code>$ mv a.cpp b.cpp
+$ mv a.cpp /b.cpp
+</code></pre>
+<ul>
+<li>cp ( copy)</li>
+</ul>
+<pre><code>$ cp a.cpp /b.cpp
+</code></pre>
+<ul>
+<li>rm ( remove) ( can not remove directory)</li>
+</ul>
+<pre><code>$ rm a.cpp
+$ rm -r /dir ( to remove all files under the directory)
+</code></pre>
+<ul>
+<li>rmdir ( remove empty directory)</li>
+</ul>
+<pre><code>$ rmdir /dir
+</code></pre>
+<ul>
+<li>mkdir ( create a directory)</li>
+</ul>
+<pre><code>$ mkdir /a
+</code></pre>
+<ul>
+<li>
+<p>crtl+c ( cancel)</p>
+</li>
+<li>
+<p>man ( manul pages) (按q退出)</p>
+</li>
+</ul>
+<pre><code>$ man ls
+</code></pre>
+<ul>
+<li>ctrl+l ( 清空终端)</li>
+</ul>
+<blockquote>
+<p>流: &lt; in &gt; out &gt;&gt; add</p>
+</blockquote>
+<pre><code>$ echo hello &gt; hello.out
+</code></pre>
+<ul>
+<li>cat ( show the file)</li>
+</ul>
+<pre><code>$ cat hello.in
+$ cat &lt; hello.in &gt; hello.out
+$ cat hello.out
+$ cat &lt;hello,in &gt;&gt; hello.out
+$ cat hello.out
+</code></pre>
+<ul>
+<li>pipe:<code>|</code> ( take the output of the left program to and make the input of the right program)</li>
+</ul>
+<pre><code>$ a | b
+</code></pre>
+<ul>
+<li>tail ( print the last line)</li>
+</ul>
+<pre><code>$ tail -n1 ( print the last one line)
+</code></pre>
+<pre><code>$ ls -l / | tail -n1&gt; ls.txt
+</code></pre>
+<ul>
+<li>sudo ( super user: root)</li>
+<li>sysfs ()</li>
+</ul>
+<pre><code>$ cd /sys
+</code></pre>
+<pre><code>$ sudo su ( use root to run shell)
+# ...
+</code></pre>
+<ul>
+<li>tee ( write to the file and shell)</li>
+</ul>
+<pre><code>$ tee &lt; hello &gt; hello.out
+</code></pre>
+<pre><code>$ echo 500 | sudo tee brightness
+</code></pre>
+<ul>
+<li>
+<p>xdg-open ( use right sofrware to open a file)</p>
+</li>
+<li>
+<p>touch ( change the time of the file) ( usually use it to create a new file)</p>
+</li>
+</ul>
+<pre><code>$ touch a.cpp
+</code></pre>
+<ul>
+<li>chmod ( change the permission)</li>
+</ul>
+<pre><code>u - user
+g - group
+o - other
++/-
+rwx
+</code></pre>
+<pre><code>$ chmod ug+rw a.cpp
+</code></pre>
+
+          </div>
+        </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="https://guohr-226.github.io/post/about/">
+              <h3 class="post-title">
+                下一篇：关于
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">音无结弦之时，天使跃动之心。立于浮华之世，奏响天籁之音。</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://guohr-226.github.io//atom.xml" target="_blank">RSS</a>
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>
